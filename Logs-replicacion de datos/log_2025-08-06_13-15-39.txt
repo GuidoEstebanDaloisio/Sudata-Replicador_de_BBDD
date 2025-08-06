@@ -1,0 +1,22 @@
+
+> Eliminando todas las tablas en la base nube (orden + CASCADE)...
+
+> Extrayendo datos desde la base local: fechas
+> Replicando en la base nube: fechas
+>>> fechas replicada correctamente.
+
+> Extrayendo datos desde la base local: productos
+> Replicando en la base nube: productos
+>>> productos replicada correctamente.
+
+> Extrayendo datos desde la base local: customer_segment
+> Replicando en la base nube: customer_segment
+>>> customer_segment replicada correctamente.
+
+> Extrayendo datos desde la base local: ventas
+> Replicando en la base nube: ventas
+>>> ventas replicada correctamente.
+
+>>> ¡Replicación completada con éxito!
+
+> Log guardado en: D:\Users\Usuario\Desktop\G\Proyects\Sudata- Ejercicios\Ejercicio 1\Programa\Logs-replicacion de datos\log_2025-08-06_13-15-39.txt

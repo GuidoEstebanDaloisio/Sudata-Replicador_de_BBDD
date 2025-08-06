@@ -1,0 +1,36 @@
+name: Replicación diaria de datos
+
+on:
+  workflow_dispatch:  # Permite ejecutar manualmente
+  schedule:
+    - cron: "0 12 * * *"  # Ejecuta todos los días a las 12:00 UTC
+
+jobs:
+  replicar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar replicación
+        env:
+          PG_HOST_LOCAL: ${{ secrets.PG_HOST_LOCAL }}
+          PG_PORT_LOCAL: ${{ secrets.PG_PORT_LOCAL }}
+          PG_USER_LOCAL: ${{ secrets.PG_USER_LOCAL }}
+          PG_PASS_LOCAL: ${{ secrets.PG_PASS_LOCAL }}
+          PG_DB_LOCAL: ${{ secrets.PG_DB_LOCAL }}
+          PG_HOST_NUBE: ${{ secrets.PG_HOST_NUBE }}
+          PG_PORT_NUBE: ${{ secrets.PG_PORT_NUBE }}
+          PG_USER_NUBE: ${{ secrets.PG_USER_NUBE }}
+          PG_PASS_NUBE: ${{ secrets.PG_PASS_NUBE }}
+          PG_DB_NUBE: ${{ secrets.PG_DB_NUBE }}
+        run: python replicar_datos.py
